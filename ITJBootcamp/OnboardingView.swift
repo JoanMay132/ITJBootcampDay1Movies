@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    let imageName = "FindingDory"
+    let imageName = "FindingNemo"
     let movie : Movie
     var body: some View {
         VStack(spacing : 15) {
@@ -30,16 +30,17 @@ struct OnboardingView: View {
         .padding()
       
         .background {
+            
             AsyncImage(
                 url: movie.imageURL,
                 transaction: Transaction(animation: .easeIn(duration: 2))
                 
             ) { phase in
                 switch phase {
-                    case .success(let image):
+                case .success(let image):
                         BlurredImageBackground(image: image)
                 default:
-                    BlurredImageBackground(image: Image(systemName: imageName))
+                    BlurredImageBackground(image: Image(imageName))
                 }
             }
             .ignoresSafeArea()
